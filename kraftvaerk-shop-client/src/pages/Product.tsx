@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-interface ProductProps {
-
-}
+interface ProductProps {}
 
 export const Product: React.FC<ProductProps> = ({}) => {
-        return (<p>Product</p>);
-}
+  return <p>Product</p>;
+};

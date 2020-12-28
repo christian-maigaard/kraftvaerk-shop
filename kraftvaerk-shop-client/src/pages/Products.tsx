@@ -1,7 +1,5 @@
 import React from "react";
 
-interface ProductsProps {}
-
-export const Products: React.FC<ProductsProps> = ({}) => {
+export const Products: React.FC = () => {
   return <p>Products</p>;
 };
