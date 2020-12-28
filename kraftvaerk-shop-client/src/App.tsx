@@ -5,28 +5,18 @@ import { About } from "./pages/About";
 import { Home } from "./pages/Home";
 import { Checkout } from "./pages/Checkout";
 import { Products } from "./pages/Products";
-
+import { NotFound } from "./pages/NotFound";
 
 export const App = () => {
   return (
     <>
       <Navigation />
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/products">
-          <Products />
-        </Route>
-        <Route exact path="/checkout">
-          <Checkout />
-        </Route>
-        <Route exact path="/about">
-          <About />
-          
-        </Route>
-
-        <Redirect to="/" />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/about" component={About} />
+        <Route component={NotFound} />
       </Switch>
     </>
   );
