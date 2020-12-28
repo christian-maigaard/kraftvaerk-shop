@@ -11,10 +11,10 @@ export const Home: React.FC = () => {
         <h1>Welcome to Kraftvaerk Shop</h1>
         <p className="lead text-muted"> We have been developing the future since 2004</p>
         <p>
-          <Button as={Link} to="/products" variant="primary" size="lg" active>
+          <Button as={Link} to="/products" variant="primary" size="lg">
             Shop now
           </Button>{" "}
-          <Button as={Link} to="/about" variant="secondary" size="lg" active>
+          <Button as={Link} to="/about" variant="secondary" size="lg">
             About us
           </Button>
         </p>

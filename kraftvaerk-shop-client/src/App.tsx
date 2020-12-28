@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigation } from "./components/Navigation";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { About } from "./pages/About";
 import { Home } from "./pages/Home";
 import { Checkout } from "./pages/Checkout";
