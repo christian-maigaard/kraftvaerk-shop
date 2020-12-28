@@ -11,13 +11,15 @@ export const App = () => {
   return (
     <>
       <Navigation />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/about" component={About} />
-        <Route component={NotFound} />
-      </Switch>
+      <div style={{ height: "100vh" }}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/about" component={About} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     </>
   );
 };
