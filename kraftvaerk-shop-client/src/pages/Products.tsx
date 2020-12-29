@@ -6,6 +6,7 @@ import CardDeck from "react-bootstrap/CardDeck";
 
 const products: Product[] = [
   {
+    id: "kj234j23lk4j324li324",
     name: "The Danish Defense",
     mediaUrl:
       "https://stkraftvaerkcomprod.blob.core.windows.net/cache/2/1/0/7/b/b/2107bbf0fac11ea30d751f7b33924558d597f5b5.jpg",
@@ -14,6 +15,7 @@ const products: Product[] = [
       "The Danish Defence Personnel organisation and Kraftvaerk have developed a career site that attracts more visitors. The secret weapon is better integration of data.",
   },
   {
+    id: "k2ok324o32k4234234",
     name: "HAY",
     mediaUrl:
       "https://kraftvaerk.com/media/q45ec25i/hay.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446441416370000",
@@ -22,6 +24,7 @@ const products: Product[] = [
       "Kraftvaerk has been chosen as partner for the migration project of HAY’s B2B e-commerce. This is part of a larger digitalisation process at the strong design brand.",
   },
   {
+    id: "k2ok324o32k4234234",
     name: "Royal Greenland",
     mediaUrl:
       "https://kraftvaerk.com/media/d4cdqykz/rg_case-header.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446440034000000",
@@ -30,6 +33,7 @@ const products: Product[] = [
       "In co-operation with Kraftvaerk, Royal Greenland has implemented an online product catalog for industrial customers, which will help streamline the company's sales process and increase...",
   },
   {
+    id: "k2ok324o32k4234234",
     name: "Topdanmark",
     mediaUrl:
       "https://kraftvaerk.com/media/lkyed3kg/topdanmark_dsc7965_vok.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446442160100000",
@@ -38,6 +42,7 @@ const products: Product[] = [
       "Topdanmark is embarking on a major migration project, where all websites will be assembled on a new Java platform. Kraftvaerk is part of the project as development and implementation partner.",
   },
   {
+    id: "k2ok324o32k4234234",
     name: "Resurs Bank",
     mediaUrl:
       "https://kraftvaerk.com/media/3cki0vib/rb_header_ok-1.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446440038070000",

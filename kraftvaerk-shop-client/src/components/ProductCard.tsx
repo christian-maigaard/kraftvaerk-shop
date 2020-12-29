@@ -19,10 +19,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Card.Text>
             <b>{product.price}</b> €
           </Card.Text>
-          <Button as={Link} to="/products" variant="primary">
-            Add to basket
-          </Button>{" "}
-          <Button as={Link} to="/about" variant="secondary">
+          <Button variant="primary">Add to basket</Button>{" "}
+          <Button as={Link} to={`/products/${product.id}`} variant="secondary">
             Details
           </Button>
         </Card.Body>
