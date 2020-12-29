@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Kraftvaerk_shop_server.Models;
 
 
 namespace Kraftvaerk_shop_server.Models
@@ -18,6 +19,8 @@ namespace Kraftvaerk_shop_server.Models
         {
             get; set;
         }
+
+        public DbSet<Kraftvaerk_shop_server.Models.Order> Order { get; set; }
     }
 }
 
