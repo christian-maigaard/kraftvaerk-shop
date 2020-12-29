@@ -8,6 +8,15 @@ import Spinner from "react-bootstrap/Spinner";
 export const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+
+  const shouldDisplayInformation = isLoading || (!isLoading && products.length === 0) || error;
+
+  const getDisplayInformation = () => {
+    if (isLoading) return <Spinner animation="border" variant="primary" />;
+    if (!isLoading && products.length === 0) return <h1>No products found</h1>;
+    if (error) return <h1>An error occoured when fetching the products from the server</h1>;
+  };
 
   useEffect(() => {
     fetch("https://localhost:44387/api/products")
@@ -18,19 +27,15 @@ export const Products: React.FC = () => {
       })
       .catch((error) => {
         setIsLoading(false);
+        setError(error);
       });
   }, []);
 
   return (
     <>
-      {isLoading && (
+      {shouldDisplayInformation && (
         <div className="h-100 d-flex flex-column justify-content-center align-items-center">
-          <Spinner animation="border" variant="primary" />
-        </div>
-      )}
-      {!isLoading && products.length === 0 && (
-        <div className="h-100 d-flex flex-column justify-content-center align-items-center">
-          <h1>No products found</h1>
+          {getDisplayInformation()}
         </div>
       )}
 
