@@ -8,7 +8,13 @@ export const useFetchProducts = () => {
 
   useEffect(() => {
     fetch(Endpoints.BASE_URL + "/api/products")
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response.status);
+        }
+      })
       .then((data) => {
         setIsLoading(false);
         setProducts(data);

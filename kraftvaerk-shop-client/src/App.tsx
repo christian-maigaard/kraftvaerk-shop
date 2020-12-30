@@ -7,7 +7,7 @@ export const App = () => {
   return (
     <>
       <Navigation />
-      <div className="page-content">
+      <div className="vh-100 p-3">
         <AppRouter />
       </div>
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductCard } from "./../components/ProductCard";
 import Container from "react-bootstrap/Container";
-import CardDeck from "react-bootstrap/CardDeck";
+import CardColumns from "react-bootstrap/CardColumns";
 import Spinner from "react-bootstrap/Spinner";
 import { CenterWrapper } from "../components/wrappers/CenterWrapper";
 import { useFetchProducts } from "../hooks/useFetchProducts";
@@ -19,15 +19,12 @@ export const Products: React.FC = () => {
   return (
     <>
       {shouldDisplayInformation && <CenterWrapper>{getDisplayInformation()}</CenterWrapper>}
-
       <Container>
-        <CardDeck>
-          <div className="d-flex flex-wrap">
-            {products.map((product, index) => (
-              <ProductCard key={product.name + index} product={product} />
-            ))}
-          </div>
-        </CardDeck>
+        <CardColumns>
+          {products.map((product, index) => (
+            <ProductCard key={product.name + index} product={product} />
+          ))}
+        </CardColumns>
       </Container>
     </>
   );
