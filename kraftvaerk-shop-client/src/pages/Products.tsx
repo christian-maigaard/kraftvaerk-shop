@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ProductCard } from "./../components/ProductCard";
-import { Product } from "./../models/Product.d";
 import Container from "react-bootstrap/Container";
 import CardDeck from "react-bootstrap/CardDeck";
 import Spinner from "react-bootstrap/Spinner";
+import { CenterWrapper } from "../components/wrappers/CenterWrapper";
+import { useFetchProducts } from "../hooks/useFetchProducts";
 
 export const Products: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState();
-
+  const { products, isLoading, error } = useFetchProducts();
   const shouldDisplayInformation = isLoading || (!isLoading && products.length === 0) || error;
 
   const getDisplayInformation = () => {
@@ -18,26 +16,9 @@ export const Products: React.FC = () => {
     if (error) return <h1>An error occoured when fetching the products from the server</h1>;
   };
 
-  useEffect(() => {
-    fetch("https://localhost:44387/api/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setProducts(data);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setError(error);
-      });
-  }, []);
-
   return (
     <>
-      {shouldDisplayInformation && (
-        <div className="h-100 d-flex flex-column justify-content-center align-items-center">
-          {getDisplayInformation()}
-        </div>
-      )}
+      {shouldDisplayInformation && <CenterWrapper>{getDisplayInformation()}</CenterWrapper>}
 
       <Container>
         <CardDeck>

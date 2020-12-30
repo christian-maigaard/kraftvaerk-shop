@@ -2,10 +2,11 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import { CenterWrapper } from "../components/wrappers/CenterWrapper";
 
 export const NotFound: React.FC = () => {
   return (
-    <div className="h-100 d-flex flex-column justify-content-center align-items-center">
+    <CenterWrapper>
       <Container>
         <h1>Sorry, we cannot find the information you are looking for.</h1>
         <p className="lead text-muted">
@@ -18,6 +19,6 @@ export const NotFound: React.FC = () => {
           </Button>
         </p>
       </Container>
-    </div>
+    </CenterWrapper>
   );
 };
