@@ -3,15 +3,10 @@ import React, { useState, useContext } from "react";
 import { createContext } from "react";
 import { Product } from "../models/Product";
 
-// export const BasketContext = createContext<{
-//   basket: Product[];
-//   setBasket: React.Dispatch<React.SetStateAction<Product[]>>;
-// } | null>(null);
-
 export const BasketContext = createContext<Product[]>([]);
 
-export const BasketUpdateContext = createContext<React.Dispatch<React.SetStateAction<Product[]>>>(
-  () => console.log("empty")
+export const BasketUpdateContext = createContext<(product: Product) => void>(() =>
+  console.log("empty")
 );
 
 export const useBasket = () => {
@@ -24,11 +19,16 @@ export const useBasketUpdate = () => {
 
 export const BasketProvider: React.FC = ({ children }) => {
   const [basket, setBasket] = useState<Product[]>([]);
-  // const providerValue = useMemo(() => ({ basket, setBasket }), [basket, setBasket]);
+
+  const updateBasket = (product: Product) => {
+    const basketCopy = [...basket];
+    basketCopy.push(product);
+    setBasket(basketCopy);
+  };
 
   return (
     <BasketContext.Provider value={basket}>
-      <BasketUpdateContext.Provider value={setBasket}>{children}</BasketUpdateContext.Provider>
+      <BasketUpdateContext.Provider value={updateBasket}>{children}</BasketUpdateContext.Provider>
     </BasketContext.Provider>
   );
 };

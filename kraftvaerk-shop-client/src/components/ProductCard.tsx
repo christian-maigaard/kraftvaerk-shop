@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Product } from "./../models/Product.d";
 import { Link } from "react-router-dom";
+import { AddToBasketButton } from "./AddToBasketButton";
 
 interface ProductCardProps {
   product: Product;
@@ -18,9 +19,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Card.Text>
           <b>{product.price}</b> €
         </Card.Text>
-        <Button variant="primary" block>
-          Add to basket
-        </Button>{" "}
+        <AddToBasketButton product={product} />
         <Button as={Link} to={`/products/${product.id}`} variant="secondary" block>
           Details
         </Button>

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Navigation } from "./components/Navigation";
 import { AppRouter } from "./components/AppRouter";
 import { BasketProvider } from "./context/BasketProvider";
+import "./style/app.css";
 
 export const App = () => {
   return (
