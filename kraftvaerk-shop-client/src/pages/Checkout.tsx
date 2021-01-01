@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { CustomerOrderDetails } from "./../components/CustomerOrderDetails";
+import { OrderSummary } from "./../components/OrderSummary";
+import { useBasket } from "../context/BasketProvider";
 
-interface CheckoutProps {}
+export const Checkout: React.FC = () => {
+  const basket = useBasket();
+  const [validated, setValidated] = useState(false);
 
-export const Checkout: React.FC<CheckoutProps> = ({}) => {
-  return <p>checkout</p>;
+  const finishOrder = (event: any) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+  };
+
+  return (
+    <Row>
+      <Col xs={12} md={6}>
+        <CustomerOrderDetails validated={validated} handleSubmit={finishOrder} />
+      </Col>
+      <Col xs={12} md={6}>
+        <OrderSummary
+          products={basket}
+          buttonText="Place Order"
+          buttonDisabled={false}
+          displayButton={true}
+          displayProductOverview={true}
+          onButtonClick={finishOrder}
+        />
+      </Col>
+    </Row>
+  );
 };

@@ -1,25 +1,42 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-
 import Button from "react-bootstrap/Button";
 import { Product } from "./../models/Product.d";
+import { ProductList } from "./ProductList";
 
 interface OrderSummaryProps {
   products: Product[];
+  buttonText: string;
+  displayButton: boolean;
+  buttonDisabled?: boolean;
+  displayProductOverview: boolean;
+  onButtonClick: (event: any) => void;
 }
 
-export const OrderSummary: React.FC<OrderSummaryProps> = ({ products }) => {
-  var productPrices = products.map((product) => product.price);
+export const OrderSummary: React.FC<OrderSummaryProps> = ({
+  products,
+  buttonText,
+  displayButton,
+  buttonDisabled,
+  displayProductOverview,
+  onButtonClick,
+}) => {
+  const productPrices = products.map((product) => product.price);
   const subTotal = productPrices.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     0
   );
   const deliveryFee = products.length >= 5 || products.length === 0 ? 0 : 10;
   const totalPrice = subTotal + deliveryFee;
+
   return (
     <Card>
       <Card.Header as="h4">Your order</Card.Header>
       <Card.Body>
+        {products.length === 0 && <Card.Text>Your basket is empty</Card.Text>}
+
+        {displayProductOverview && <ProductList products={products} />}
+
         <div className="d-flex  justify-content-between">
           <Card.Text>Subtotal</Card.Text>
           {subTotal}
@@ -36,9 +53,11 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({ products }) => {
         </div>
         <hr />
 
-        <Button variant="primary" block>
-          Go to checkout
-        </Button>
+        {displayButton && (
+          <Button disabled={buttonDisabled} variant="primary" block onClick={onButtonClick}>
+            {buttonText}
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
