@@ -19,8 +19,8 @@ export const Navigation: React.FC = () => {
           <Nav.Link as={Link} to="/products">
             Products
           </Nav.Link>
-          <Nav.Link as={Link} to="/checkout">
-            Checkout {basket.length > 0 && <Badge variant="primary">{basket.length}</Badge>}
+          <Nav.Link as={Link} to="/basket">
+            Basket {basket.length > 0 && <Badge variant="primary">{basket.length}</Badge>}
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
             About

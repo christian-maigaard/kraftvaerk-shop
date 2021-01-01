@@ -1,8 +1,7 @@
 import React from "react";
-import { useBasket, useBasketUpdate } from "../context/BasketProvider";
 
-export const Checkout: React.FC = () => {
-  const basket = useBasket();
+interface CheckoutProps {}
 
-  return <pre> {JSON.stringify(basket, null, 2)}</pre>;
+export const Checkout: React.FC<CheckoutProps> = ({}) => {
+  return <p>checkout</p>;
 };

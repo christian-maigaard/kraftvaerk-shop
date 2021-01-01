@@ -1,6 +1,5 @@
 import React from "react";
 import { ProductCard } from "./../components/ProductCard";
-import Container from "react-bootstrap/Container";
 import CardColumns from "react-bootstrap/CardColumns";
 import Spinner from "react-bootstrap/Spinner";
 import { CenterWrapper } from "../components/wrappers/CenterWrapper";
@@ -19,13 +18,11 @@ export const Products: React.FC = () => {
   return (
     <>
       {shouldDisplayInformation && <CenterWrapper>{getDisplayInformation()}</CenterWrapper>}
-      <Container>
-        <CardColumns>
-          {products.map((product, index) => (
-            <ProductCard key={product.name + index} product={product} />
-          ))}
-        </CardColumns>
-      </Container>
+      <CardColumns>
+        {products.map((product, index) => (
+          <ProductCard key={product.name + index} product={product} />
+        ))}
+      </CardColumns>
     </>
   );
 };

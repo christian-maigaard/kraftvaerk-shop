@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useFetchProduct } from "./../hooks/useFetchProduct";
@@ -18,7 +17,6 @@ export const Product: React.FC<ProductProps> = ({ productId }) => {
       {isLoading && <CenteredSpinner />}
       {error && <NotFound />}
       {product && !error && (
-        <Container>
           <Row>
             <Col xs={12} md={6}>
               <Image src={product?.mediaUrl} fluid />
@@ -38,7 +36,6 @@ export const Product: React.FC<ProductProps> = ({ productId }) => {
               </div>
             </Col>
           </Row>
-        </Container>
       )}
     </>
   );

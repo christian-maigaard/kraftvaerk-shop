@@ -5,9 +5,9 @@ import { Product } from "../models/Product";
 
 export const BasketContext = createContext<Product[]>([]);
 
-export const BasketUpdateContext = createContext<(product: Product) => void>(() =>
-  console.log("empty")
-);
+export const BasketUpdateContext = createContext<(product: Product) => void>(() => {
+  return;
+});
 
 export const useBasket = () => {
   return useContext(BasketContext);
