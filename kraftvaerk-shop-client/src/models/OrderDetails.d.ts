@@ -1,12 +1,13 @@
 export interface OrderDetails {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  company: string;
-  street: string;
-  city: string;
-  country: string;
-  areaCode: string;
-  telePhone: string;
+  [key: string]: any;
+  id?: string;
+  email?: string;
+  firstname?: string;
+  lastname?: string;
+  company?: string;
+  address?: string;
+  country?: string;
+  city?: string;
+  zip?: string;
+  telephone?: string;
 }

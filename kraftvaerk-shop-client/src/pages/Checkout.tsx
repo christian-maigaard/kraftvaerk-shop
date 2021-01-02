@@ -4,18 +4,24 @@ import Col from "react-bootstrap/Col";
 import { CustomerOrderDetails } from "./../components/CustomerOrderDetails";
 import { OrderSummary } from "./../components/OrderSummary";
 import { useBasket } from "../context/BasketProvider";
+import { OrderDetails } from "./../models/OrderDetails.d";
 
 export const Checkout: React.FC = () => {
   const basket = useBasket();
   const [validated, setValidated] = useState(false);
 
-  const finishOrder = (event: any) => {
+  const finishOrder = (event: any, orderDetails: OrderDetails) => {
     const form = event.currentTarget;
+    const formData = new FormData(event.target),
+      formDataObj = Object.fromEntries(formData.entries());
+    console.log(formDataObj);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
+
+    console.log("placing order with : " + orderDetails);
   };
 
   return (
@@ -30,7 +36,7 @@ export const Checkout: React.FC = () => {
           buttonDisabled={false}
           displayButton={true}
           displayProductOverview={true}
-          onButtonClick={finishOrder}
+          onButtonClick={() => {}}
         />
       </Col>
     </Row>

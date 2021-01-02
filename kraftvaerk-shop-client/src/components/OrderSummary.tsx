@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Product } from "./../models/Product.d";
 import { ProductList } from "./ProductList";
+import { OrderDetails } from "./../models/OrderDetails.d";
 
 interface OrderSummaryProps {
   products: Product[];
@@ -10,7 +11,7 @@ interface OrderSummaryProps {
   displayButton: boolean;
   buttonDisabled?: boolean;
   displayProductOverview: boolean;
-  onButtonClick: (event: any) => void;
+  onButtonClick: (event: any, orderDetails?: OrderDetails) => void;
 }
 
 export const OrderSummary: React.FC<OrderSummaryProps> = ({
