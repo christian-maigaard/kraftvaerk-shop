@@ -6,7 +6,7 @@ import { Basket } from "../pages/Basket";
 import { Products } from "../pages/Products";
 import { Product } from "../pages/Product";
 import { NotFound } from "../pages/NotFound";
-import { Checkout } from './../pages/Checkout';
+import { Checkout } from '../pages/checkout/Checkout';
 
 interface MatchParams {
   id: string;

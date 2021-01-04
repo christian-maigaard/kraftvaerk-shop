@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { CustomerOrderDetails } from "./../components/CustomerOrderDetails";
-import { OrderSummary } from "./../components/OrderSummary";
-import { useBasket } from "../context/BasketProvider";
-import { OrderDetails } from "./../models/OrderDetails.d";
+import { CustomerOrderDetails } from "../../components/CustomerOrderDetails";
+import { OrderSummary } from "../../components/OrderSummary";
+import { useBasket } from "../../context/BasketProvider";
+import { OrderDetails } from "../../models/OrderDetails";
+import { Order } from "./../../models/Order.d";
+import { useOrder } from "./../../context/OrderProvider";
+import { PlaceOrder } from "../../api/Order";
 
 export const Checkout: React.FC = () => {
   const basket = useBasket();
@@ -12,16 +15,24 @@ export const Checkout: React.FC = () => {
 
   const finishOrder = (event: any, orderDetails: OrderDetails) => {
     const form = event.currentTarget;
-    const formData = new FormData(event.target),
-      formDataObj = Object.fromEntries(formData.entries());
-    console.log(formDataObj);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      return;
     }
+    event.preventDefault();
+    event.stopPropagation();
     setValidated(true);
 
     console.log("placing order with : " + orderDetails);
+    const order: Order = {
+      id: "123",
+      products: basket,
+      orderDetails: orderDetails,
+    };
+    const res = PlaceOrder(order);
+    console.log("placed order ");
+    console.log(res);
   };
 
   return (

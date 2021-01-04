@@ -13,14 +13,12 @@ namespace Kraftvaerk_shop_server.Models
         public KraftvaerkContext(DbContextOptions<KraftvaerkContext> options)
              : base(options)
         {
+
         }
 
-        public DbSet<Product> Products
-        {
-            get; set;
-        }
+        public DbSet<Product> Products { get; set; }
 
-        public DbSet<Kraftvaerk_shop_server.Models.Order> Order { get; set; }
+        public DbSet<Order> Order { get; set; }
     }
 }
 

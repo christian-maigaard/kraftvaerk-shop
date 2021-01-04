@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Product } from "./../models/Product.d";
 import { ProductList } from "./ProductList";
 import { OrderDetails } from "./../models/OrderDetails.d";
+import { useOrderUpdate } from "../context/OrderProvider";
 
 interface OrderSummaryProps {
   products: Product[];
@@ -29,6 +30,10 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
   );
   const deliveryFee = products.length >= 5 || products.length === 0 ? 0 : 10;
   const totalPrice = subTotal + deliveryFee;
+
+  const updateOrder = useOrderUpdate();
+
+
 
   return (
     <Card>
