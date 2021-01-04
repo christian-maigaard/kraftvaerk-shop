@@ -75,12 +75,11 @@ namespace Kraftvaerk_shop_server.Controllers
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product[]>> PostProduct(Product[] products)
         {
-            _context.Products.Add(product);
+            _context.Products.AddRange(products);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+            return products;
         }
 
         // DELETE: api/Products/5
