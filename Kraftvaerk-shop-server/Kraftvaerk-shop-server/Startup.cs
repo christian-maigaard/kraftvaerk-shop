@@ -25,7 +25,9 @@ namespace Kraftvaerk_shop_server
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000"                                            );
+                        builder.WithOrigins("http://localhost:3000")
+                                            .AllowAnyMethod()
+                                            .AllowAnyHeader();
                     });
             });
             services.AddDbContext<KraftvaerkContext>(opt =>

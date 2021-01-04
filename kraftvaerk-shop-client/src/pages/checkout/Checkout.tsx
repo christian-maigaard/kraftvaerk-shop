@@ -6,7 +6,6 @@ import { OrderSummary } from "../../components/OrderSummary";
 import { useBasket } from "../../context/BasketProvider";
 import { OrderDetails } from "../../models/OrderDetails";
 import { Order } from "./../../models/Order.d";
-import { useOrder } from "./../../context/OrderProvider";
 import { PlaceOrder } from "../../api/Order";
 
 export const Checkout: React.FC = () => {
@@ -26,7 +25,6 @@ export const Checkout: React.FC = () => {
 
     console.log("placing order with : " + orderDetails);
     const order: Order = {
-      id: "123",
       products: basket,
       orderDetails: orderDetails,
     };
