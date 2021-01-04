@@ -24,7 +24,7 @@ namespace Kraftvaerk_shop_server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
-            return await _context.Order.ToListAsync();
+            return await _context.Order.Include(o => o.Orderdetails).Include(o => o.Products).ToListAsync();
         }
 
         // GET: api/Orders/5
