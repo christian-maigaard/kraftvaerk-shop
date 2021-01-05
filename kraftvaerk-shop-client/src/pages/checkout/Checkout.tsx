@@ -14,18 +14,16 @@ export const Checkout: React.FC = () => {
 
   const finishOrder = (event: any, orderDetails: OrderDetails) => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
     event.preventDefault();
     event.stopPropagation();
+    if (form.checkValidity() === false) {
+      return;
+    }
     setValidated(true);
 
     console.log("placing order with : " + orderDetails);
     const order: Order = {
-      products: basket,
+      productIds: basket.map((product) => product.id),
       orderDetails: orderDetails,
     };
     const res = PlaceOrder(order);
