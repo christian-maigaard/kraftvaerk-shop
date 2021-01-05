@@ -1,8 +1,6 @@
-﻿    using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Kraftvaerk_shop_server.Models;
@@ -24,7 +22,7 @@ namespace Kraftvaerk_shop_server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
-            return await _context.Order.Include(o => o.OrderDetails).Include(o => o.OrderProducts).ToListAsync();
+            return await _context.Order.ToListAsync();
         }
 
         // GET: api/Orders/5

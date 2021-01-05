@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -6,11 +6,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { OrderDetails } from "./../models/OrderDetails.d";
 import { Link } from "react-router-dom";
-
-interface CustomerOrderDetailsProps {
-  validated: boolean;
-  handleSubmit: (event: any, orderDetails: OrderDetails) => void;
-}
+import { useHistory } from "react-router-dom";
+import { useOrderUpdate } from "../context/OrderProvider";
+import { useBasket } from "../context/BasketProvider";
 
 enum FormId {
   email = "email",
@@ -36,14 +34,31 @@ const formIds: string[] = [
   FormId.telephone,
 ];
 
-export const CustomerOrderDetails: React.FC<CustomerOrderDetailsProps> = ({
-  validated,
-  handleSubmit,
-}) => {
-  const onFormSubmit = (event: any) => {
-    const formElements = event.currentTarget.elements;
-    const customerOrderDetails = getCustomerOrderDetails(formElements);
-    handleSubmit(event, customerOrderDetails);
+export const CustomerOrderDetails: React.FC = () => {
+  const [validated, setValidated] = useState(false);
+
+  const basketProducts = useBasket();
+  const history = useHistory();
+  const updateOrder = useOrderUpdate();
+
+  const handleOrderSubmit = (event: any) => {
+    const form = event.currentTarget;
+    const customerDetailsValid = form.checkValidity();
+
+    if (!customerDetailsValid) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+
+    if (customerDetailsValid) {
+      updateOrder({
+        orderProducts: basketProducts,
+        orderDetails: getCustomerOrderDetails(form.elements),
+      });
+      history.push("/checkout/confirmation");
+    }
   };
 
   const getCustomerOrderDetails = (formElements: any): OrderDetails => {
@@ -53,11 +68,12 @@ export const CustomerOrderDetails: React.FC<CustomerOrderDetailsProps> = ({
     );
     return customerOrderDetails;
   };
+
   return (
     <Card>
       <Card.Header as="h4">Order details</Card.Header>
       <Card.Body>
-        <Form noValidate validated={validated} onSubmit={onFormSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleOrderSubmit}>
           <Form.Group controlId="email">
             <Form.Label>Email address</Form.Label>
             <Form.Control required type="email" placeholder="Enter email" />
