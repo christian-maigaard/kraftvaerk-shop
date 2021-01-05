@@ -1,8 +1,8 @@
 import { OrderDetails } from "./OrderDetails.d";
-import { OrderProduct } from "./OrderProduct.d";
+import { Product } from "./../pages/Product";
 
 export interface Order {
   orderId?: number;
-  orderProducts: OrderProduct[];
+  orderProducts: Product[];
   orderDetails: OrderDetails;
 }

@@ -15,11 +15,10 @@ export const Error: React.FC<ErrorProps> = ({ title, message }) => {
       <Container>
         <h1>{title}</h1>
         <p className="lead text-muted">{message}</p>
-        <p>
-          <Button as={Link} to="/" variant="primary" size="lg" active>
-            Go home
-          </Button>
-        </p>
+        <br />
+        <Button as={Link} to="/" variant="primary" size="lg" active>
+          Go to frontpage
+        </Button>
       </Container>
     </CenterWrapper>
   );
