@@ -34,7 +34,9 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
     <Card>
       <Card.Header as="h4">Your order</Card.Header>
       <Card.Body>
-        {products.length === 0 && <Card.Text>Your basket is empty</Card.Text>}
+        {displayProductOverview && products.length === 0 && (
+          <Card.Text>Your basket is empty</Card.Text>
+        )}
 
         {displayProductOverview && <ProductList products={products} />}
 

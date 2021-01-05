@@ -11,7 +11,7 @@ export const Basket: React.FC = () => {
 
   const history = useHistory();
 
-  const goToCheckout = (event: React.MouseEvent<HTMLInputElement>) => {
+  const goToCheckout = () => {
     history.push("/checkout");
   };
 
