@@ -16,7 +16,7 @@ export const BasketCard: React.FC<BasketCardProps> = ({ products }) => {
       <Card.Body>
         {products.length === 0 && <Card.Text>Your basket is empty</Card.Text>}
         {products.map((product, index) => (
-          <div key={product.id}>
+          <div key={product.productId + index}>
             <Row>
               <Col xs={2}>
                 <Image src={product?.mediaUrl} fluid />

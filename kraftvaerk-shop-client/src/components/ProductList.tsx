@@ -13,7 +13,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
     <>
       {products.map((product, index) => (
-        <div key={product.id + index}>
+        <div key={product.productId + index}>
           <Row>
             <Col xs={2}>
               <Image src={product?.mediaUrl} fluid />

@@ -6,29 +6,30 @@ import { OrderSummary } from "../../components/OrderSummary";
 import { useBasket } from "../../context/BasketProvider";
 import { OrderDetails } from "../../models/OrderDetails";
 import { Order } from "./../../models/Order.d";
-import { PlaceOrder } from "../../api/Order";
+import { useHistory } from "react-router-dom";
+import { useOrderUpdate } from "../../context/OrderProvider";
 
 export const Checkout: React.FC = () => {
-  const basket = useBasket();
+  const basketProducts = useBasket();
+  const history = useHistory();
+  const updateOrder = useOrderUpdate();
+
   const [validated, setValidated] = useState(false);
 
   const finishOrder = (event: any, orderDetails: OrderDetails) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
-    if (form.checkValidity() === false) {
-      return;
-    }
+    if (form.checkValidity() === false) return;
     setValidated(true);
 
     console.log("placing order with : " + orderDetails);
     const order: Order = {
-      productIds: basket.map((product) => product.id),
+      orderProducts: basketProducts,
       orderDetails: orderDetails,
     };
-    const res = PlaceOrder(order);
-    console.log("placed order ");
-    console.log(res);
+    updateOrder(order);
+    history.push("/checkout/confirmation");
   };
 
   return (
@@ -37,14 +38,7 @@ export const Checkout: React.FC = () => {
         <CustomerOrderDetails validated={validated} handleSubmit={finishOrder} />
       </Col>
       <Col xs={12} md={6}>
-        <OrderSummary
-          products={basket}
-          buttonText="Place Order"
-          buttonDisabled={false}
-          displayButton={true}
-          displayProductOverview={true}
-          onButtonClick={() => {}}
-        />
+        <OrderSummary products={basketProducts} displayProductOverview={true} />
       </Col>
     </Row>
   );

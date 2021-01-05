@@ -46,7 +46,7 @@ namespace Kraftvaerk_shop_server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(long id, Product product)
         {
-            if (id != product.Id)
+            if (id != product.ProductId)
             {
                 return BadRequest();
             }
@@ -100,7 +100,7 @@ namespace Kraftvaerk_shop_server.Controllers
 
         private bool ProductExists(long id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return _context.Products.Any(e => e.ProductId == id);
         }
     }
 }

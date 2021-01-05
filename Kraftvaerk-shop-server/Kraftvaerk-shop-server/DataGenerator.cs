@@ -23,7 +23,7 @@ namespace Kraftvaerk_shop_server
                 context.Products.AddRange(
                 new Product
                 {
-                    Id = 1,
+                    ProductId = 1,
                     Name = "The Danish Defense",
                     MediaUrl = "https://stkraftvaerkcomprod.blob.core.windows.net/cache/2/1/0/7/b/b/2107bbf0fac11ea30d751f7b33924558d597f5b5.jpg",
                     Price = 149,
@@ -31,7 +31,7 @@ namespace Kraftvaerk_shop_server
                 },
                 new Product
                 {                       
-                    Id = 2,
+                    ProductId = 2,
                     Name =  "HAY",
                     MediaUrl = "https://kraftvaerk.com/media/q45ec25i/hay.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446441416370000",
                     Price = 149,
@@ -39,7 +39,7 @@ namespace Kraftvaerk_shop_server
                 },
                 new Product
                 {
-                    Id = 3,
+                    ProductId = 3,
                     Name = "Royal Greenland",
                     MediaUrl = "https://kraftvaerk.com/media/d4cdqykz/rg_case-header.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446440034000000",
                     Price = 399,
@@ -47,7 +47,7 @@ namespace Kraftvaerk_shop_server
                 },
                 new Product
                 {
-                    Id = 4,
+                    ProductId = 4,
                     Name = "Topdanmark",
                     MediaUrl = "https://kraftvaerk.com/media/lkyed3kg/topdanmark_dsc7965_vok.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446442160100000",
                     Price = 999,
@@ -55,7 +55,7 @@ namespace Kraftvaerk_shop_server
                 },
                 new Product
                 {
-                    Id = 5,
+                    ProductId = 5,
                     Name = "Resurs Bank",
                     MediaUrl = "https://kraftvaerk.com/media/3cki0vib/rb_header_ok-1.jpg?anchor=center&mode=crop&width=1050&height=787&rnd=132446440038070000",
                     Price = 249,

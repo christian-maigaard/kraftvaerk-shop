@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "./../models/Product.d";
 import * as Endpoints from "../constants/Endpoints";
+import { formatResponse } from "./../util/FetchHelper";
 export const useFetchProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -8,13 +9,7 @@ export const useFetchProducts = () => {
 
   useEffect(() => {
     fetch(Endpoints.BASE_URL + "/api/products")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(response.status);
-        }
-      })
+      .then((res) => formatResponse(res))
       .then((data) => {
         setIsLoading(false);
         setProducts(data);

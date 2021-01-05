@@ -9,8 +9,8 @@ namespace Kraftvaerk_shop_server.Models
 {
     public class Order
     {
-        public long Id { get; set; }
-        public ICollection<Product> Products { get; set; }
-        public OrderDetails Orderdetails { get; set; }
+        public long OrderId { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
+        public OrderDetails OrderDetails { get; set; }
     }
 }

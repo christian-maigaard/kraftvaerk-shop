@@ -2,7 +2,7 @@ import React from "react";
 import { ProductCard } from "./../components/ProductCard";
 import CardColumns from "react-bootstrap/CardColumns";
 import { useFetchProducts } from "../hooks/useFetchProducts";
-import { NotFound } from "./NotFound";
+import { Error } from "./Error";
 import { CenteredSpinner } from "./../components/CenteredSpinner";
 
 export const Products: React.FC = () => {
@@ -11,7 +11,12 @@ export const Products: React.FC = () => {
   return (
     <>
       {isLoading && <CenteredSpinner />}
-      {error && <NotFound />}
+      {error && (
+        <Error
+          title="Oops! An error occoured while fetching products"
+          message="Please try again later"
+        />
+      )}
       {products && !error && (
         <CardColumns>
           {products.map((product, index) => (

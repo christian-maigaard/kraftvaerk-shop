@@ -20,7 +20,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <b>{product.price}</b> €
         </Card.Text>
         <AddToBasketButton product={product} />
-        <Button as={Link} to={`/products/${product.id}`} variant="secondary" block>
+        <Button as={Link} to={`/products/${product.productId}`} variant="secondary" block>
           Details
         </Button>
       </Card.Body>

@@ -24,7 +24,7 @@ namespace Kraftvaerk_shop_server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
-            return await _context.Order.Include(o => o.Orderdetails).Include(o => o.Products).ToListAsync();
+            return await _context.Order.Include(o => o.OrderDetails).Include(o => o.OrderProducts).ToListAsync();
         }
 
         // GET: api/Orders/5
@@ -46,7 +46,7 @@ namespace Kraftvaerk_shop_server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrder(long id, Order order)
         {
-            if (id != order.Id)
+            if (id != order.OrderId)
             {
                 return BadRequest();
             }
@@ -80,7 +80,7 @@ namespace Kraftvaerk_shop_server.Controllers
             _context.Order.Add(order);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+            return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }
 
         // DELETE: api/Orders/5
@@ -101,7 +101,7 @@ namespace Kraftvaerk_shop_server.Controllers
 
         private bool OrderExists(long id)
         {
-            return _context.Order.Any(e => e.Id == id);
+            return _context.Order.Any(e => e.OrderId == id);
         }
     }
 }

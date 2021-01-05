@@ -1,6 +1,5 @@
 export interface OrderDetails {
   [key: string]: any;
-  id?: string;
   email?: string;
   firstname?: string;
   lastname?: string;

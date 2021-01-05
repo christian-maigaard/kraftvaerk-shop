@@ -1,9 +1,11 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { OrderDetails } from "./../models/OrderDetails.d";
+import { Link } from "react-router-dom";
 
 interface CustomerOrderDetailsProps {
   validated: boolean;
@@ -104,9 +106,19 @@ export const CustomerOrderDetails: React.FC<CustomerOrderDetailsProps> = ({
             <Form.Label>Telephone</Form.Label>
             <Form.Control required type="text" placeholder="Telephone" />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+
+          <Row>
+            <Col>
+              <Button as={Link} to={"/products/"} variant="link" block>
+                Continue shopping
+              </Button>
+            </Col>
+            <Col>
+              <Button type="submit" variant="primary" block>
+                Place Order
+              </Button>
+            </Col>
+          </Row>
         </Form>
       </Card.Body>
     </Card>
