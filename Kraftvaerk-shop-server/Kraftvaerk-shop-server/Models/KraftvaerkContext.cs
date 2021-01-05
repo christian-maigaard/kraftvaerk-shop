@@ -30,6 +30,7 @@ namespace Kraftvaerk_shop_server.Models
                     Price = 49,
                     Description= "The Danish Defence Personnel organisation and Kraftvaerk have developed a career site that attracts more visitors. The secret weapon is better integration of data."}
                 );
+
         }
     }
 }
