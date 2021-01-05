@@ -16,12 +16,12 @@ NB: the application is made in ASP.NET Core 5.0 and is required to run the solut
 
 ## Start React application
 
-To start up the React application, navigate to the "kraftvaerk-shop-client" folder in a terminal and use the package manager Yarn to install dependencies with the following command.
+To start up the React application, navigate to the "kraftvaerk-shop-client" folder in a terminal and use the package manager Yarn to install dependencies with the following command: 
 
 ```bash
 yarn
 ```
-and start the development server by using 
+once completed, start the development server by using: 
 
 ```bash
 yarn start
